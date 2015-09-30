@@ -1,10 +1,10 @@
 class Hamming
-  VERSION = 1
+  VERSION = 2
   
-def self.compute(s1, s2)
-    raise ArgumentError if s1.length != s2.length
+  def self.compute(s1, s2)
+    raise(ArgumentError, 'unequal input lengths') if s1.length != s2.length
 
-    s1.split('').zip(s2.split('')).select { |x1, x2| x1 != x2 }.length
+    s1.chars.zip(s2.chars).count { |c1, c2| c1 != c2 }
   end
 end
 
